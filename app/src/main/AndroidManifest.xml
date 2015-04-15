@@ -1,0 +1,91 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.firefall.movethroughglass">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.glass.permission.DEVELOPMENT" /> <!-- enables unlisted voice command usage -->
+
+    <application
+        android:name=".Controller"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:theme="@style/AppTheme">
+
+        <!-- Transition Activity -->
+        <activity
+            android:name=".TransitionActivity"
+            android:theme="@style/AppTheme"
+            android:immersive="true"
+            android:noHistory="true">
+        </activity>
+
+        <!-- ALIASES -->
+        <!-- Balance Me -->
+        <activity-alias
+            android:name=".balance"
+            android:targetActivity=".TransitionActivity">
+            <!-- Test Voice Trigger -->
+            <intent-filter>
+                <action android:name="com.google.android.glass.action.VOICE_TRIGGER" />
+            </intent-filter>
+
+            <meta-data
+                android:name="com.google.android.glass.VoiceTrigger"
+                android:resource="@xml/balance" />
+        </activity-alias>
+
+        <!-- Unfreeze Me -->
+        <activity-alias
+            android:name=".unfreeze"
+            android:targetActivity=".TransitionActivity">
+            <!-- Test Voice Trigger -->
+            <intent-filter>
+                <action android:name="com.google.android.glass.action.VOICE_TRIGGER" />
+            </intent-filter>
+
+            <meta-data
+                android:name="com.google.android.glass.VoiceTrigger"
+                android:resource="@xml/unfreeze" />
+        </activity-alias>
+
+        <!-- Warm Me Up-->
+        <activity-alias
+            android:name=".warm"
+            android:targetActivity=".TransitionActivity">
+            <!-- Test Voice Trigger -->
+            <intent-filter>
+                <action android:name="com.google.android.glass.action.VOICE_TRIGGER" />
+            </intent-filter>
+
+            <meta-data
+                android:name="com.google.android.glass.VoiceTrigger"
+                android:resource="@xml/warm" />
+        </activity-alias>
+
+        <!-- Walk With Me -->
+        <activity-alias
+            android:name=".walk"
+            android:targetActivity=".TransitionActivity">
+            <!-- Test Voice Trigger -->
+            <intent-filter>
+                <action android:name="com.google.android.glass.action.VOICE_TRIGGER" />
+            </intent-filter>
+
+            <meta-data
+                android:name="com.google.android.glass.VoiceTrigger"
+                android:resource="@xml/walk" />
+        </activity-alias>
+        <!-- ALIASES -->
+
+        <!-- Video Activity -->
+        <activity
+            android:name=".VideoActivity"
+            android:theme="@style/AppTheme">
+        </activity>
+
+        <service
+            android:enabled="true"
+            android:name=".AudioService" />
+
+    </application>
+
+</manifest>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Device Default theme removes title bar from window -->
+<resources>
+    <style name="AppTheme" parent="android:Theme.DeviceDefault">
+    </style>
+</resources>

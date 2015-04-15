@@ -1,0 +1,119 @@
+<resources>
+    <!-- flags and intent attributes IF needed -->
+    <string name="video_url">video_url</string>
+    <string name="voice_trigger">voice_trigger</string>
+    <string name="video_set">video_set</string>
+    <string name="play_count">play_count</string>
+    <string name="replay_flag">replay_flag</string>
+    <string name="redirect_flag">redirect_flag</string>
+    <string name="speed_flag">speed_flag</string>
+    <string name="backwards_navigation_flag">backwards_navigation_flag</string>
+    <string name="audio_speed_flag">audio_speed_flag</string>
+    <string name="swiped_on_text_card">swiped_on_text_card</string>
+
+    <!-- Main Menu voice triggers for routines -->
+    <string name="balance_voice_trigger">Balance Me</string>
+    <string name="warm_voice_trigger">Warm me up</string>
+    <string name="walk_voice_trigger">Walk with me</string>
+    <string name="unfreeze_voice_trigger">Unfreeze me</string>
+
+    <!-- Unfreeze Me Routine video URI strings -->
+    <string-array name="unfreeze_me_videos">
+        <item>/DCIM/Camera/Unfreeze_Me_Intro_March.mp4</item>
+        <item>/DCIM/Camera/Unfreeze_Me_Waltz_Posterior_View.mp4</item>
+        <item>/DCIM/Camera/Unfreeze_Me_Habanera_Posterior.mp4</item>
+    </string-array>
+
+    <string-array name="unfreeze_me_file_names">
+        <item>March</item>
+        <item>Waltz</item>
+        <item>Habanera</item>
+    </string-array>
+    <!-- Unfreeze Me Routine video URI strings -->
+
+    <!-- Walk With Me Routine video URI strings -->
+    <string-array name="walk_with_me_videos">
+        <item>/DCIM/Camera/WWM_Intro.mp4</item>
+        <item>/DCIM/Camera/WWM_76_bpm.mp4</item>
+        <item>/DCIM/Camera/WWM_90_bpm.mp4</item>
+        <item>/DCIM/Camera/WWM_112_bpm.mp4</item>
+        <item>/DCIM/Camera/WWM_128_bpm.mp4</item>
+    </string-array>
+
+    <string-array name="walk_with_me_audio">
+        <item>NONE - INTRO TRACK</item>
+        <item>/DCIM/Camera/WWM_76_bpm.aac</item>
+        <item>/DCIM/Camera/WWM_90_bpm.aac</item>
+        <item>/DCIM/Camera/WWM_112_bpm.aac</item>
+        <item>/DCIM/Camera/WWM_128_bpm.aac</item>
+    </string-array>
+
+    <string-array name="walk_with_me_file_names">
+        <item>Intro</item>
+        <item>Gentle</item>
+        <item>Medium</item>
+        <item>Medium Fast</item>
+        <item>Fast</item>
+    </string-array>
+    <!-- Walk With Me Routine video URI strings -->
+
+    <!-- Speed flag strings (Used with Walk With Me Routine) -->
+    <string-array name="speeds">
+        <item>None</item>
+        <item>Gentle</item>
+        <item>Medium</item>
+        <item>Medium Fast</item>
+        <item>Fast</item>
+    </string-array>
+
+    <!-- Balance Me Routine video URI strings -->
+    <string-array name="balance_me_videos">
+        <item>/DCIM/Camera/Balance_Me_Sailors_Dance.mp4</item>
+        <item>/DCIM/Camera/Balance_Me_Marble_Halls.mp4</item>
+        <item>/DCIM/Camera/Balance_Me_Snow.mp4</item>
+        <item>/DCIM/Camera/Balance_Me_LAllegro.mp4</item>
+    </string-array>
+
+    <string-array name="balance_me_file_names">
+        <item>Sailor\'s Dance</item>
+        <item>Marble Hills</item>
+        <item>Snow</item>
+        <item>L\'Allegro</item>
+    </string-array>
+    <!-- Balance Me Routine video URI strings -->
+
+    <!-- Warm Me Up Routine video URI strings -->
+    <string-array name="warm_me_up_videos">
+        <item>/DCIM/Camera/Warm_Me_Up_Mountains.mp4</item>
+        <item>/DCIM/Camera/Warm_Me_Up_V_Circles.mp4</item>
+        <item>/DCIM/Camera/Warm_Me_Up_Hands_Bouree.mp4</item>
+        <item>/DCIM/Camera/Warm_Me_Up_Love_Song_Waltzes.mp4</item>
+    </string-array>
+
+    <string-array name="warm_me_up_file_names">
+        <item>Mountains</item>
+        <item>V-Circles</item>
+        <item>Hands Bouree</item>
+        <item>Love Song / Waltz</item>
+    </string-array>
+    <!-- Warm Me Up Routine video URI strings -->
+
+</resources>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
