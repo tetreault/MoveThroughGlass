@@ -1,4 +1,8 @@
 <resources>
+    <string name="app_name">Moving Through Glass</string>
+
+    <string name="volume">Adjust Volume</string>
+
     <!-- flags and intent attributes IF needed -->
     <string name="video_url">video_url</string>
     <string name="voice_trigger">voice_trigger</string>
@@ -33,19 +37,19 @@
 
     <!-- Walk With Me Routine video URI strings -->
     <string-array name="walk_with_me_videos">
-        <item>/DCIM/Camera/WWM_Intro.mp4</item>
-        <item>/DCIM/Camera/WWM_76_bpm.mp4</item>
-        <item>/DCIM/Camera/WWM_90_bpm.mp4</item>
-        <item>/DCIM/Camera/WWM_112_bpm.mp4</item>
-        <item>/DCIM/Camera/WWM_128_bpm.mp4</item>
+        <item>WWM_Intro.mp4</item>
+        <item>WWM_76_bpm.mp4</item>
+        <item>WWM_90_bpm.mp4</item>
+        <item>WWM_112_bpm.mp4</item>
+        <item>WWM_128_bpm.mp4</item>
     </string-array>
 
     <string-array name="walk_with_me_audio">
         <item>NONE - INTRO TRACK</item>
-        <item>/DCIM/Camera/WWM_76_bpm.aac</item>
-        <item>/DCIM/Camera/WWM_90_bpm.aac</item>
-        <item>/DCIM/Camera/WWM_112_bpm.aac</item>
-        <item>/DCIM/Camera/WWM_128_bpm.aac</item>
+        <item>WWM_76_bpm.aac</item>
+        <item>WWM_90_bpm.aac</item>
+        <item>WWM_112_bpm.aac</item>
+        <item>WWM_128_bpm.aac</item>
     </string-array>
 
     <string-array name="walk_with_me_file_names">
@@ -68,10 +72,10 @@
 
     <!-- Balance Me Routine video URI strings -->
     <string-array name="balance_me_videos">
-        <item>/DCIM/Camera/Balance_Me_Sailors_Dance.mp4</item>
-        <item>/DCIM/Camera/Balance_Me_Marble_Halls.mp4</item>
-        <item>/DCIM/Camera/Balance_Me_Snow.mp4</item>
-        <item>/DCIM/Camera/Balance_Me_LAllegro.mp4</item>
+        <item>Balance_Me_Sailors_Dance.mp4</item>
+        <item>Balance_Me_Marble_Halls.mp4</item>
+        <item>Balance_Me_Snow.mp4</item>
+        <item>Balance_Me_LAllegro.mp4</item>
     </string-array>
 
     <string-array name="balance_me_file_names">
@@ -84,10 +88,10 @@
 
     <!-- Warm Me Up Routine video URI strings -->
     <string-array name="warm_me_up_videos">
-        <item>/DCIM/Camera/Warm_Me_Up_Mountains.mp4</item>
-        <item>/DCIM/Camera/Warm_Me_Up_V_Circles.mp4</item>
-        <item>/DCIM/Camera/Warm_Me_Up_Hands_Bouree.mp4</item>
-        <item>/DCIM/Camera/Warm_Me_Up_Love_Song_Waltzes.mp4</item>
+        <item>Warm_Me_Up_Mountains.mp4</item>
+        <item>Warm_Me_Up_V_Circles.mp4</item>
+        <item>Warm_Me_Up_Hands_Bouree.mp4</item>
+        <item>Warm_Me_Up_Love_Song_Waltzes.mp4</item>
     </string-array>
 
     <string-array name="warm_me_up_file_names">
