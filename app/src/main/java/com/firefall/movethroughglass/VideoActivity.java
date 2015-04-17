@@ -157,6 +157,7 @@ public class VideoActivity extends Activity implements TextureView.SurfaceTextur
             public boolean onGesture(Gesture gesture) {
                 if (gesture == Gesture.SWIPE_DOWN) {
                     Log.i("GESTURE_EVENT", "VideoActivity.createGestureDetector() onGesture() SWIPE DOWN");
+//                    routine.dumpRoutine();
 
                     handleBackgroundAudio("stop");
 
@@ -166,7 +167,10 @@ public class VideoActivity extends Activity implements TextureView.SurfaceTextur
                     return true;
                 } else if (gesture == Gesture.TAP) {
                     Log.i("GESTURE_EVENT", "VideoActivity.createGestureDetector() onGesture() TAP");
-                    if (routine.getVideoSetName().equals(Controller.getController().getResources().getString(R.string.walk_voice_trigger)) && routine.getVideoPosition() == 0) finishWalkWithMeVideo("forward");
+//                    routine.dumpRoutine();
+
+//                    if (routine.getVideoSetName().equals(Controller.getController().getResources().getString(R.string.walk_voice_trigger)) && routine.getVideoPosition() == 0) finishWalkWithMeVideo("forward");
+                    if (routine.getVideoSetName().equals(Controller.getController().getResources().getString(R.string.walk_voice_trigger))) finishWalkWithMeVideo("forward");
                     else finishVideo("forward");
                     return true;
                 }
@@ -188,7 +192,11 @@ public class VideoActivity extends Activity implements TextureView.SurfaceTextur
         Intent i = new Intent(theController, VideoActivity.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
-        if (direction.equals("forward")) routine.setVideoPosition(Controller.moveToNext());
+        if (direction.equals("forward")) {
+            handleBackgroundAudio("stop");
+            routine.setVideoPosition(Controller.moveToNext());
+        }
+
         else routine.setVideoPosition(Controller.moveToPrevious());
 
         startActivity(i);
@@ -200,7 +208,23 @@ public class VideoActivity extends Activity implements TextureView.SurfaceTextur
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
         try {
-            if (direction.equals("forward")) routine.setVideoPosition(Controller.moveToNext());
+            if (direction.equals("forward")) {
+                if (routine.getVideoPosition() == 0 && routine.getVideoSetName().equals(Controller.getController().getResources().getString(R.string.walk_voice_trigger))) {
+                    startActivity(i);
+                    finish();
+                }
+//                else if (routine.getVideoPosition() == 4 && routine.getVideoSetName().equals(Controller.getController().getResources().getString(R.string.walk_voice_trigger))) {
+//                    startActivity(i);
+//                    finish();
+//                }
+                else {
+                    try{
+                        routine.setVideoPosition(Controller.moveToNext());
+                    } catch (Exception e) {
+                        System.out.println("Oh Uh");
+                    }
+                }
+            }
             else routine.setVideoPosition(Controller.moveToPrevious());
         } catch (Exception e) {
             Log.wtf("ERROR", "Exiting with an error.");

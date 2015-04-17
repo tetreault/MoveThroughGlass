@@ -19,6 +19,7 @@ public class Routine {
     private int videoPosition; // i.e. "play count" -- is this the second or third video, etc
     private int voiceTrigger;
     private int layout;
+    private int isLastVideo;
     private Resources res;
 
     private final String absolutePath = Environment.getExternalStorageDirectory().getAbsolutePath();
@@ -33,6 +34,7 @@ public class Routine {
     // build object attributes from provided voice trigger
     private void initialLoadContentFromTrigger(int voiceTrigger) {
         this.videoPosition = 0;
+        this.isLastVideo = 0;
         this.videoFileName = "";
         this.voiceTrigger = voiceTrigger;
         this.speedSet = this.res.getStringArray(R.array.speeds);
@@ -93,9 +95,10 @@ public class Routine {
     }
 
     private void setVideoName() {
-        int temp = this.videoPosition - 1; // Handle Walk With Me edge case - intro video as first "transition card" throws off array logic all other modules share
-        if (this.videoSetName.equals(res.getString(R.string.walk_voice_trigger))) this.videoFileName = this.videoFileNames[temp];
-        else this.videoFileName = this.videoFileNames[this.videoPosition];
+//        int temp = this.videoPosition - 1; // Handle Walk With Me edge case - intro video as first "transition card" throws off array logic all other modules share
+//        if (this.videoSetName.equals(res.getString(R.string.walk_voice_trigger))) this.videoFileName = this.videoFileNames[temp];
+//        else this.videoFileName = this.videoFileNames[this.videoPosition];
+        this.videoFileName = this.videoFileNames[this.videoPosition];
     }
 
     public String getVideoName() {
@@ -152,5 +155,14 @@ public class Routine {
         Log.i("ROUTINE INFO", "Video Name: " + getVideoName());
         Log.i("ROUTINE INFO", "Video URL: " + getVideoUrl());
         Log.i("ROUTINE FUNCTION", "****END: DUMP ROUTINE****");
+    }
+
+    // Handle Last Walk With Me -- Last Video nav issues
+    public void setLast(int isLast) {
+        this.isLastVideo = isLast;
+    }
+
+    public int isLast() {
+        return this.isLastVideo;
     }
 }

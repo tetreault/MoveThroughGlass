@@ -75,7 +75,7 @@
     </string-array>
 
     <string-array name="balance_me_file_names">
-        <item>Sailor\'s Dance</item>
+        <item>Sailor\'s \nDance</item>
         <item>Marble Hills</item>
         <item>Snow</item>
         <item>L\'Allegro</item>
@@ -93,8 +93,8 @@
     <string-array name="warm_me_up_file_names">
         <item>Mountains</item>
         <item>V-Circles</item>
-        <item>Hands Bouree</item>
-        <item>Love Song / Waltz</item>
+        <item>Hands \nBouree</item>
+        <item>Love Song \nWaltz</item>
     </string-array>
     <!-- Warm Me Up Routine video URI strings -->
 

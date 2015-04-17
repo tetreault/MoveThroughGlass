@@ -24,36 +24,36 @@
             android:layout_height="fill_parent"
             xmlns:android="http://schemas.android.com/apk/res/android">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Walk With Me"
-                android:id="@+id/module_name" />
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Walk With Me"-->
+                <!--android:id="@+id/module_name" />-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="(4 speeds)"
-                android:id="@+id/num_of_speeds" />
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="(4 speeds)"-->
+                <!--android:id="@+id/num_of_speeds" />-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text='"Video Name"'
-                android:id="@+id/video_name" />
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text='"Video Name"'-->
+                <!--android:id="@+id/video_name" />-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Swipe Down to bring back video"
-                android:id="@+id/swipe_down_text"
-                android:textAlignment="center" />
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Swipe Down to bring back video"-->
+                <!--android:id="@+id/swipe_down_text"-->
+                <!--android:textAlignment="center" />-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tap to go faster"
-                android:id="@+id/tap_text" />
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Tap to go faster"-->
+                <!--android:id="@+id/tap_text" />-->
 
         </LinearLayout>
 

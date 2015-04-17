@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,7 +20,6 @@ public class TransitionActivity extends Activity {
 
     // Transition Card Names
     private static final int[] COUNTDOWN_CARDS = { R.drawable.transition_0, R.drawable.transition_1, R.drawable.transition_2, R.drawable.transition_3, R.drawable.transition_4, R.drawable.transition_5 };
-    private static final int[] WALK_WITH_ME_TRANSITION_CARDS = { R.drawable.walk_with_me_gentle_transition, R.drawable.walk_with_me_medium_transition, R.drawable.walk_with_me_medium_fast_transition, R.drawable.walk_with_me_fast_transition };
 
     private Controller theController;
     private Routine routine;
@@ -37,6 +37,7 @@ public class TransitionActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         Log.i("TRANSITION FUNCTION", "TransitionActivity onCreate()");
         super.onCreate(savedInstanceState);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); // Don't let screen dim during use
         theController = Controller.getController();
         int currentVoiceTrigger;
         mGestureDetector = createGestureDetector(this);
@@ -48,7 +49,6 @@ public class TransitionActivity extends Activity {
             currentVoiceTrigger = (activityInfo.metaData != null) ? (activityInfo.metaData.getInt("com.google.android.glass.VoiceTrigger")) : 0;
 
             routine = (theController.getRoutine() == null) ? theController.createRoutine(currentVoiceTrigger) : theController.getRoutine();
-            routine.dumpRoutine();
             setContentView(routine.getLayout());
         } catch ( Exception e ) {
             e.printStackTrace();
@@ -73,7 +73,7 @@ public class TransitionActivity extends Activity {
             @Override
             public void onFinish() {
                 Log.i("TRANSITION FUNCTION", " TransitionActivity runCountdown() onFinish()");
-                finishTransitionForVideo();
+                finishTransitionForVideo("forward");
             }
         };
     }
@@ -109,18 +109,27 @@ public class TransitionActivity extends Activity {
     // Handle all the settable text that appears on layout
     private void setMainCardText() {
         Log.i("TRANSITION FUNCTION", "TransitionActivity setCardText()");
-        videoName.setText(routine.getVideoName());
 
         switch( routine.getVoiceTriggerInt() ) {
             case R.xml.balance:
                 Log.i("TRANSITION FUNCTION", "TransitionActivity setCardText() Balance Me");
                 moduleName.setText("Balance Me");
+                videoName.setText(routine.getVideoName());
+
+                // Weird bug -- fast hacky fix -- on very 1st occurrence of routine being started, first dance name doesn't show. If you nav back to position 0 mid-routine the name DOES show, though.
+                if (routine.getVideoPosition() == 0) videoName.setText("Sailor\'s \nDance");
+
                 videoCount.setText(((routine.getVideoPosition() + 1) + " of " + routine.getVideoSetLength()));
                 runCountdown();
                 break;
             case R.xml.warm:
                 Log.i("TRANSITION FUNCTION", "TransitionActivity setCardText() Warm Me Up");
                 moduleName.setText("Warm Me Up");
+                videoName.setText(routine.getVideoName());
+
+                // Weird bug -- fast hacky fix -- on very 1st occurrence of routine being started, first dance name doesn't show. If you nav back to position 0 mid-routine the name DOES show, though.
+                if (routine.getVideoPosition() == 0) videoName.setText("Mountains");
+
                 videoCount.setText(((routine.getVideoPosition() + 1) + " of " + routine.getVideoSetLength()));
                 runCountdown();
                 break;
@@ -128,17 +137,56 @@ public class TransitionActivity extends Activity {
                 Log.i("TRANSITION FUNCTION", "TransitionActivity setCardText() Unfreeze Me");
                 moduleName.setText("Unfreeze Me");
                 videoName.setText(routine.getVideoName());
+
+                // Weird bug -- fast hacky fix -- on very 1st occurrence of routine being started, first dance name doesn't show. If you nav back to position 0 mid-routine the name DOES show, though.
+                if (routine.getVideoPosition() == 0) videoName.setText("March");
+
+                videoName.setText(routine.getVideoName());
                 videoCount.setText(((routine.getVideoPosition() + 1) + " of " + routine.getVideoSetLength()));
                 runCountdown();
                 break;
             case R.xml.walk:
                 Log.i("TRANSITION FUNCTION", "TransitionActivity setCardText() Walk With Me");
-                videoName.setText(routine.getVideoName());
+                //videoName.setText(routine.getVideoName());
+
                 // If first Walk With Me file, its video intro not text card -- do finishTransitionForVideo()
-                if (routine.getVideoPosition() == 0) finishTransitionForVideo();
-                else if (routine.getVideoPosition() >= 4) {
-                    tapText = (TextView)findViewById(R.id.tap_text);
-                    tapText.setText("Tap to quit");
+                if (routine.getVideoPosition() == 0) finishTransitionForVideo("forward");
+                else {
+
+                    routine.dumpRoutine();
+
+                    switch (routine.getVideoPosition()) {
+                        case 2:
+                            System.out.println("Loading Walk With Me -- Gentle Card");
+                            background.setBackgroundResource(R.drawable.walk_with_me_gentle_transition); // Set background image
+                            break;
+                        case 3:
+                            System.out.println("Loading Walk With Me -- Medium Card");
+                            background.setBackgroundResource(R.drawable.walk_with_me_medium_transition); // Set background image
+                            break;
+                        case 4:
+                            System.out.println("Loading Walk With Me -- Medium Fast Card");
+
+                            background.setBackgroundResource(R.drawable.walk_with_me_medium_fast_transition); // Set background image
+//
+//                            if (routine.getVideoUrl().equals("/storage/emulated/0/DCIM/Camera/WWM_128_bpm.mp4")) {
+//                                background.setBackgroundResource(R.drawable.walk_with_me_fast_transition);
+//                            } else {
+//                                background.setBackgroundResource(R.drawable.walk_with_me_medium_fast_transition); // Set background image
+//                            }
+
+                            break;
+//                        case 5:
+//                            System.out.println("Loading Walk With Me -- Fast Card");
+//                            background.setBackgroundResource(R.drawable.walk_with_me_fast_transition); // Set background image
+//                            break;
+                        default:
+                            // Hacky Fix to circumvent issues from Walk With Me Nav -- This will technically play the last "transition card"
+                            System.out.println("Loading Walk With Me -- No Card -- Technically \"Last card\"");
+                            background.setBackgroundResource(R.drawable.walk_with_me_fast_transition);
+                            routine.setVideoPosition(4);
+                            routine.setLast(1);
+                    }
                 }
                 break;
             default:
@@ -155,22 +203,26 @@ public class TransitionActivity extends Activity {
             public boolean onGesture(Gesture gesture) {
                 if (gesture == Gesture.SWIPE_DOWN) { // Go Backwards in all other sets
                     Log.i("GESTURE_EVENT", "TransitionActivity createGestureDetector() onGesture() SWIPE DOWN");
+//                    routine.dumpRoutine();
+
                     // If this is Walk With Me stop our background Audio Process, else clear text on transition card layout
                     if (routine.getVideoSetName().equals(Controller.getController().getResources().getString(R.string.walk_voice_trigger))) {
-                        if (theController.isServiceRunning(AudioService.class)) stopService(new Intent(TransitionActivity.this, AudioService.class));
+                        //if (theController.isServiceRunning(AudioService.class)) stopService(new Intent(TransitionActivity.this, AudioService.class));
                     }
                     else {
                         moduleName.setText("");
                         videoCount.setText("");
                         videoName.setText("Loading...");
                     }
-                    if (routine.getVideoSetName().equals(Controller.getController().getResources().getString(R.string.walk_voice_trigger))) finishTransitionForVideo();
+
+                    if (routine.getVideoSetName().equals(Controller.getController().getResources().getString(R.string.walk_voice_trigger))) finishTransitionForVideo("backward");
                     else finishTransitionForNextTransition("backward");
+
                     return true;
                 } else if (gesture == Gesture.TAP) { // Go Forward in all other sets
                     Log.i("GESTURE_EVENT", "TransitionActivity createGestureDetector() onGesture() TAP");
 //                    routine.setVideoPosition(Controller.moveToNext());
-                    routine.dumpRoutine();
+//                    routine.dumpRoutine();
 
                     // If this is Walk With Me stop our background Audio Process, else clear text on transition card layout
                     if (routine.getVideoSetName().equals(Controller.getController().getResources().getString(R.string.walk_voice_trigger))) {
@@ -182,7 +234,7 @@ public class TransitionActivity extends Activity {
                         videoName.setText("Loading...");
                     }
 
-                    if (routine.getVideoSetName().equals(Controller.getController().getResources().getString(R.string.walk_voice_trigger))) finishTransitionForVideo();
+                    if (routine.getVideoSetName().equals(Controller.getController().getResources().getString(R.string.walk_voice_trigger))) finishTransitionForVideo("forward");
                     else finishTransitionForNextTransition("forward");
 
 //                  if ( getIntent().getStringExtra(VIDEO_SET).equals("WALK_WITH_ME_FILES") && Integer.parseInt(getIntent().getExtras().get(PLAY_COUNT).toString()) >= 2 ) {
@@ -203,10 +255,28 @@ public class TransitionActivity extends Activity {
         return ((mGestureDetector != null) ? mGestureDetector.onMotionEvent(event) : false);
     }
 
-    private void finishTransitionForVideo() {
+
+    private void finishTransitionForVideo(String direction) {
         Log.i("TRANSITION FUNCTION", "TransitionActivity finishTransitionForVideo()");
         Intent i = new Intent(theController, VideoActivity.class);
-        theController.setRoutine(routine);
+//        theController.setRoutine(routine);
+
+        System.out.println(direction + "   " + routine.getVideoUrl());
+
+        // for walk with me navigation edge case
+//        if (direction.equals("forward") && routine.getVideoUrl().equals("/storage/emulated/0/DCIM/Camera/WWM_128_bpm.mp4")) {
+//            System.exit(1);
+//        }
+        if (routine.isLast() == 1 && direction.equals("forward")) {
+            // Clean up any residual audio
+            if (routine.getVideoSetName().equals(Controller.getController().getResources().getString(R.string.walk_voice_trigger))) {
+                if (theController.isServiceRunning(AudioService.class)) stopService(new Intent(TransitionActivity.this, AudioService.class));
+            }
+            System.exit(1);
+        } else if (direction.equals("backward")) {
+            routine.setLast(0);
+            routine.setVideoPosition(Controller.moveToPrevious());
+        }
         startActivity(i);
         finish();
     }
