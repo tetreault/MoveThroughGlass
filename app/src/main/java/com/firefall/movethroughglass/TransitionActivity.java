@@ -46,15 +46,26 @@ public class TransitionActivity extends Activity {
             Log.i("LOG", "TransitionActivity onCreate() - Establishing Voice Trigger, Creating Routine Object and setting up View");
 
             ActivityInfo activityInfo = this.getPackageManager().getActivityInfo(this.getComponentName(), PackageManager.GET_META_DATA);
-            currentVoiceTrigger = (activityInfo.metaData != null) ? (activityInfo.metaData.getInt("com.google.android.glass.VoiceTrigger")) : 0;
+            currentVoiceTrigger = (activityInfo.metaData != null) ? (activityInfo.metaData.getInt("com.google.android.glass.VoiceTrigger")) : -1;
+
+            // Came through MainActivity/Launcher?
+            if (currentVoiceTrigger == -1) {
+                Intent mIntent = getIntent();
+                currentVoiceTrigger = mIntent.getIntExtra("voicetrigger", R.xml.balance);
+            }
 
             routine = (theController.getRoutine() == null) ? theController.createRoutine(currentVoiceTrigger) : theController.getRoutine();
             setContentView(routine.getLayout());
+
         } catch ( Exception e ) {
             e.printStackTrace();
             Log.wtf("ERROR", "Something bad happened and we never received a valid voice trigger or there was an ActivityInfo error");
             System.exit(1); // Hacky and should eventually be removed
+
+
         }
+
+
 
         moduleName = (TextView)findViewById(R.id.module_name);
         videoName = (TextView)findViewById(R.id.video_name);
