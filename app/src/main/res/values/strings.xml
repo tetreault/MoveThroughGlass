@@ -23,9 +23,9 @@
 
     <!-- Unfreeze Me Routine video URI strings -->
     <string-array name="unfreeze_me_videos">
-        <item>/DCIM/Camera/Unfreeze_Me_Intro_March.mp4</item>
-        <item>/DCIM/Camera/Unfreeze_Me_Waltz_Posterior_View.mp4</item>
-        <item>/DCIM/Camera/Unfreeze_Me_Habanera_Posterior.mp4</item>
+        <item>Unfreeze_Me_Intro_March.mp4</item>
+        <item>Unfreeze_Me_Waltz_Posterior_View.mp4</item>
+        <item>Unfreeze_Me_Habanera_Posterior.mp4</item>
     </string-array>
 
     <string-array name="unfreeze_me_file_names">
