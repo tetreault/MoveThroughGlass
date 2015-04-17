@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<!-- Use the constants defined in the ContextualMenus.Command enum-->
+<item
+    android:id="@+id/balance_menu_item"
+    android:title="@string/balance_voice_trigger">
+</item>
+<item
+    android:id="@+id/unfreeze_menu_item"
+    android:title="@string/unfreeze_voice_trigger">
+</item>
+<item
+    android:id="@+id/warm_menu_item"
+    android:title="@string/warm_voice_trigger">
+</item>
+<item
+    android:id="@+id/walk_menu_item"
+    android:title="@string/walk_voice_trigger">
+</item>
+<item
+    android:id="@+id/volume_menu_item"
+    android:title="@string/volume">
+</item>
+</menu>
