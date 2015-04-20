@@ -3,6 +3,7 @@ package com.firefall.movethroughglass;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.os.Environment;
 import android.util.Log;
 
@@ -22,7 +23,8 @@ public class Routine {
     private int isLastVideo;
     private Resources res;
 
-    private final String absolutePath = Environment.getExternalStorageDirectory().getAbsolutePath();
+    //private final String absolutePath = Environment.getExternalStorageDirectory().getAbsolutePath();
+    private final String absolutePath = "android.resource://"+Controller.getController().getPackageName()+"/raw/";
 
 
     public Routine(int voiceTrigger) {
@@ -88,6 +90,7 @@ public class Routine {
 
     private void setVideoUrl() {
         this.videoUrl = absolutePath + this.videoSet[this.videoPosition]; // Set the Video URL based off of a given videoPosition inside videoSet
+        Log.v("Video Url", this.videoUrl);
     }
 
     public String getVideoUrl() {

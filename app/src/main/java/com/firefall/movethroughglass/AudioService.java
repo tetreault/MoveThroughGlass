@@ -15,7 +15,7 @@ public class AudioService extends IntentService {
     *  NOTE: Any References to AUDIO_SPEED_FLAG should be using R.string.*_speed or get the value from Routine object
     */
     private MediaPlayer player;
-    private String absoluePath;
+    private String absolutePath;
     private Controller theController;
     private String[] audioFiles;
     private Resources res;
@@ -27,7 +27,9 @@ public class AudioService extends IntentService {
         Log.i("FUNCTION_CALL", "Audio Create");
         theController = Controller.getController();
         routine = theController.getRoutine();
-        absoluePath = Environment.getExternalStorageDirectory().getAbsolutePath();
+        //absoluePath = Environment.getExternalStorageDirectory().getAbsolutePath();
+        absolutePath = "android.resource://"+getPackageName()+"/raw/";
+
         res = Controller.getController().getResources();
         audioFiles = this.res.getStringArray(R.array.walk_with_me_audio);
     }
@@ -55,7 +57,7 @@ public class AudioService extends IntentService {
 
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.i("FUNCTION_CALL", "AudioService onStartCommand()");
-        Uri currentAudioFile = Uri.parse(absoluePath + audioFiles[routine.getVideoPosition()]);
+        Uri currentAudioFile = Uri.parse(absolutePath + audioFiles[routine.getVideoPosition()]);
         System.out.println(currentAudioFile);
 
         try {

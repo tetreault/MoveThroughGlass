@@ -22,6 +22,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.net.Uri;
 
 
 public class VideoActivity extends Activity implements TextureView.SurfaceTextureListener {
@@ -82,7 +83,14 @@ public class VideoActivity extends Activity implements TextureView.SurfaceTextur
             if ( this.mMediaPlayer == null ) {
                 Surface s = new Surface(surface);
                 mMediaPlayer = new MediaPlayer();
-                mMediaPlayer.setDataSource(routine.getVideoUrl());
+                Log.v("VideoActivity",routine.getVideoUrl());
+                mMediaPlayer.setDataSource(this,Uri.parse(routine.getVideoUrl()));
+
+                //mMediaPlayer.setDataSource(this,Uri.parse("android.resource://"+getPackageName()+"/raw/balance_me_lallegro")); // WORKS
+                //mMediaPlayer.setDataSource(getAssets().openFd("Balance_Me_LAllegro.mp4").getFileDescriptor()); // DOESN'T WORK
+                //mMediaPlayer.setDataSource(this, Uri.parse("file:///android_assets/Balance_Me_LAllegro.mp4"));  //DOESN'T WORK
+                //mMediaPlayer.setDataSource(this,Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.balance_me_lallegro)); //WORKS
+
                 mMediaPlayer.setSurface(s);
                 mMediaPlayer.prepare();
 
