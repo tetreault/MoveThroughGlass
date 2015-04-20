@@ -62,7 +62,7 @@ public class AudioService extends IntentService {
 
         try {
             if ( player != null && !player.isPlaying() ) {
-                player.setDataSource(String.valueOf(currentAudioFile));
+                player.setDataSource(theController, currentAudioFile);
                 player.setLooping(true);
                 player.prepare();
                 player.start();
