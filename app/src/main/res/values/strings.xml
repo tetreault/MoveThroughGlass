@@ -23,9 +23,9 @@
 
     <!-- Unfreeze Me Routine video URI strings -->
     <string-array name="unfreeze_me_videos">
-        <item>Unfreeze_Me_Intro_March.mp4</item>
-        <item>Unfreeze_Me_Waltz_Posterior_View.mp4</item>
-        <item>Unfreeze_Me_Habanera_Posterior.mp4</item>
+        <item>unfreeze_me_intro_march</item>
+        <item>unfreeze_me_waltz_posterior_view</item>
+        <item>unfreeze_me_habanera_posterior</item>
     </string-array>
 
     <string-array name="unfreeze_me_file_names">
@@ -37,19 +37,19 @@
 
     <!-- Walk With Me Routine video URI strings -->
     <string-array name="walk_with_me_videos">
-        <item>WWM_Intro.mp4</item>
-        <item>WWM_76_bpm.mp4</item>
-        <item>WWM_90_bpm.mp4</item>
-        <item>WWM_112_bpm.mp4</item>
-        <item>WWM_128_bpm.mp4</item>
+        <item>wwm_intro</item>
+        <item>wwm_76_bpm</item>
+        <item>wwm_90_bpm</item>
+        <item>wwm_112_bpm</item>
+        <item>wwm_128_bpm</item>
     </string-array>
 
     <string-array name="walk_with_me_audio">
         <item>NONE - INTRO TRACK</item>
-        <item>WWM_76_bpm.aac</item>
-        <item>WWM_90_bpm.aac</item>
-        <item>WWM_112_bpm.aac</item>
-        <item>WWM_128_bpm.aac</item>
+        <item>wwm_76_bpm_a</item>
+        <item>wwm_90_bpm_a</item>
+        <item>wwm_112_bpm_a</item>
+        <item>wwm_128_bpm_a</item>
     </string-array>
 
     <string-array name="walk_with_me_file_names">
@@ -72,10 +72,10 @@
 
     <!-- Balance Me Routine video URI strings -->
     <string-array name="balance_me_videos">
-        <item>Balance_Me_Sailors_Dance.mp4</item>
-        <item>Balance_Me_Marble_Halls.mp4</item>
-        <item>Balance_Me_Snow.mp4</item>
-        <item>Balance_Me_LAllegro.mp4</item>
+        <item>balance_me_sailors_dance</item>
+        <item>balance_me_marble_halls</item>
+        <item>balance_me_snow</item>
+        <item>balance_me_lallegro</item>
     </string-array>
 
     <string-array name="balance_me_file_names">
@@ -88,10 +88,10 @@
 
     <!-- Warm Me Up Routine video URI strings -->
     <string-array name="warm_me_up_videos">
-        <item>Warm_Me_Up_Mountains.mp4</item>
-        <item>Warm_Me_Up_V_Circles.mp4</item>
-        <item>Warm_Me_Up_Hands_Bouree.mp4</item>
-        <item>Warm_Me_Up_Love_Song_Waltzes.mp4</item>
+        <item>warm_me_up_mountains</item>
+        <item>warm_me_up_v_circles</item>
+        <item>warm_me_up_hands_bouree</item>
+        <item>warm_me_up_love_song_waltzes</item>
     </string-array>
 
     <string-array name="warm_me_up_file_names">
