@@ -28,7 +28,7 @@ public class AudioService extends IntentService {
         theController = Controller.getController();
         routine = theController.getRoutine();
         //absoluePath = Environment.getExternalStorageDirectory().getAbsolutePath();
-        absolutePath = "android.resource://"+getPackageName()+"/raw/";
+        absolutePath = "android.resource://"+theController.getPackageName()+"/raw/";
 
         res = Controller.getController().getResources();
         audioFiles = this.res.getStringArray(R.array.walk_with_me_audio);
