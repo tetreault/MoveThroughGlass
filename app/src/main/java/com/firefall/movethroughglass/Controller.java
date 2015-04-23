@@ -39,7 +39,7 @@ public class Controller extends Application {
     public static int moveToNext() {
         Log.i("CONTROLLER FUNCTION", "Controller moveToNext()");
         int temp = routineLength;
-        if (currentCard >= temp--) System.exit(0); // All prior activities cleared with FLAG_ACTIVITY_CLEAR_TOP in finish
+        if (currentCard >= --temp) System.exit(0); // All prior activities cleared with FLAG_ACTIVITY_CLEAR_TOP in finish
         return ++currentCard;
     }
 
